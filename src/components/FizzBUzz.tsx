@@ -1,40 +1,54 @@
 import { useState } from "react";
 
-export default function FizzBUzz(): JSX.Element{
-    const [numberFromCurrentRender, queueRerenderWithNewNumber]=
-    useState(1);
-    const [storedNumbersCurrentRender, queueRerenderWithStoredNumbers]=
-    useState<(number|string)[]>([]);
+export default function FizzBUzz(): JSX.Element {
+  const [fizzBuzzNumber, nextFizzBuzzNumber] = useState(1);
+  const [storedFizzBuzzNumbers, nextFizzBuzzIteration] = useState<
+    (number | string)[]
+  >([]);
 
-    const num = numberFromCurrentRender
-    function fizzbuzz(value :number): number|string { 
-        if (num%3 === 0) {
-            return "fizz"
-        } else if (num%5 === 0){
-            return "buzz"
-        } else {
-            return num
-        }  
+  const num = fizzBuzzNumber;
+
+  const isFizz = (currentNumber: number): boolean => {
+    if (currentNumber % 3 === 0) {
+      return true;
     }
+    return false;
+  };
 
-    const handleNextNumber= () => {
-        queueRerenderWithNewNumber(numberFromCurrentRender + 1)
+  const isBuzz = (currentNumber: number): boolean => {
+    if (currentNumber % 5 === 0) {
+      return true;
     }
+    return false;
+  };
 
-    const handleStoredNumbers = () =>{
-        queueRerenderWithStoredNumbers([...storedNumbersCurrentRender,
-            fizzbuzz(num),
-        ])
+  const asFizzBuzz = (value: number): number | string => {
+    if (isFizz(num) === true) {
+      return "Fizz";
     }
+    if (isBuzz(num) === true) {
+      return "Buzz";
+    } else {
+      return num;
+    }
+  };
 
-    return(
-        <> 
-          <h1>FizzBuzz</h1>
-          <p>Your stored numbers: {storedNumbersCurrentRender.join(",")}</p>
-          <p>Counter: {fizzbuzz(num)}</p>
-          <button onClick={handleNextNumber}>NEXT</button>
-          <hr/>
-          <button onClick={handleStoredNumbers}>Store current count</button>
-        </>      
-    )
+  const handleNextNumber = () => {
+    nextFizzBuzzNumber(fizzBuzzNumber + 1);
+  };
+
+  const handleStoredNumbers = () => {
+    nextFizzBuzzIteration([...storedFizzBuzzNumbers, asFizzBuzz(num)]);
+  };
+
+  return (
+    <>
+      <h1>FizzBuzz</h1>
+      <p>Your stored numbers: {storedFizzBuzzNumbers.join(",")}</p>
+      <p>Counter: {asFizzBuzz(num)}</p>
+      <button onClick={handleNextNumber}>NEXT</button>
+      <hr />
+      <button onClick={handleStoredNumbers}>Store current count</button>
+    </>
+  );
 }
