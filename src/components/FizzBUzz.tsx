@@ -4,10 +4,10 @@ export default function FizzBUzz(): JSX.Element{
     const [numberFromCurrentRender, queueRerenderWithNewNumber]=
     useState(1);
     const [storedNumbersCurrentRender, queueRerenderWithStoredNumbers]=
-    useState<number[]>([]);
+    useState<(number|string)[]>([]);
 
     const num = numberFromCurrentRender
-    function fizzbuzz(value :number) { 
+    function fizzbuzz(value :number): number|string { 
         if (num%3 === 0) {
             return "fizz"
         } else if (num%5 === 0){
