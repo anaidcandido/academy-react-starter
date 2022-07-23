@@ -8,11 +8,13 @@ export default function FizzBUzz(): JSX.Element{
 
     const num = numberFromCurrentRender
     function fizzbuzz(value :number) { 
-        if (num%5 === 0) {
+        if (num%3 === 0) {
             return "fizz"
-    } else {
-        return num
-    }
+        } else if (num%5 === 0){
+            return "buzz"
+        } else {
+            return num
+        }  
     }
 
     const handleNextNumber= () => {
@@ -21,7 +23,7 @@ export default function FizzBUzz(): JSX.Element{
 
     const handleStoredNumbers = () =>{
         queueRerenderWithStoredNumbers([...storedNumbersCurrentRender,
-            numberFromCurrentRender,
+            fizzbuzz(num),
         ])
     }
 
