@@ -25,10 +25,9 @@ export const asFizzBuzz = (value: number): number | string => {
   }
 };
 
-
 export function nextFizzBuzzIteration(
-  storedNumbers:(number|string)[]): (number|string)[] {
-  const number=storedNumbers.length +1
-  return ([...storedNumbers, asFizzBuzz(number)]);
+  storedNumbers: (number | string)[]
+): (number | string)[] {
+  const number = storedNumbers.length + 1;
+  return [...storedNumbers, asFizzBuzz(number)];
 }
-
