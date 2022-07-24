@@ -14,8 +14,19 @@ test("asFizzBuzz returns a string, if number is divisible by three or five; or a
 });
 
 test("nextFizzBuzz returns an array with numbers and strings", () => {
-  expect(nextFizzBuzzIteration([1, 2, "Fizz"])).toStrictEqual([1, 2, "Fizz", 4]);
-  expect(nextFizzBuzzIteration([1, 2, "Fizz", 4])).toStrictEqual([1, 2, "Fizz", 4, "Buzz"]);
+  expect(nextFizzBuzzIteration([1, 2, "Fizz"])).toStrictEqual([
+    1,
+    2,
+    "Fizz",
+    4,
+  ]);
+  expect(nextFizzBuzzIteration([1, 2, "Fizz", 4])).toStrictEqual([
+    1,
+    2,
+    "Fizz",
+    4,
+    "Buzz",
+  ]);
 });
 
 /* test("greet returns a string, greeting the passed name", () => {
