@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function FizzBUzz(): JSX.Element {
+export default function FizzBuzz(): JSX.Element {
   const [fizzBuzzNumber, nextFizzBuzzNumber] = useState(1);
   const [storedFizzBuzzNumbers, nextFizzBuzzIteration] = useState<
     (number | string)[]
