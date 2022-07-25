@@ -1,7 +1,11 @@
-import { greet } from "./utils/greet";
+//import { greet } from "./utils/greet";
+import FIzzBuzz from "./components/FizzBuzz"
 
-function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+unction App(): JSX.Element {
+  return (
+    <>
+      <FizzBuzz />
+    </>
+  );
 }
-
 export default App;
